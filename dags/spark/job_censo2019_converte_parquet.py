@@ -29,8 +29,8 @@ if __name__ == "__main__":
         spark
         .read
         .format("csv")
-        .options(header='true', inferSchema='true', delimiter=';')
-        .load("s3a://desafio-final-cloud-igti/raw/")
+        .options(header='true', inferSchema='true', delimiter='|', encoding="latin1")
+        .load("s3://desafio-final-cloud-igti/raw/")
     )
 
     df.printSchema()
@@ -39,7 +39,7 @@ if __name__ == "__main__":
     .write
     .mode("overwrite")
     .format("parquet")
-    .save("s3a://desafio-final-cloud-igti/stage/")
+    .save("s3://desafio-final-cloud-igti/stage/")
     )
 
     print("*********************")
